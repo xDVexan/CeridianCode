@@ -1,0 +1,18 @@
+{
+  "name": "ceridiancode",
+  "version": "1.0.0",
+  "description": "Code editor",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "\u0016https://github.com/xDVexan/CeridianCode"
+  },
+  "author": "xDVexan",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^5.0.6"
+  }
+}
