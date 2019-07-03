@@ -1,0 +1,8 @@
+main {
+    position: absolute;
+    top: 30px;
+    height: calc(100% - 30px);
+    width: 100%;
+    background-color: #333333;
+    color: #f7f7f7;
+}

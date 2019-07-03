@@ -9,7 +9,15 @@ let mainWindow;
 // Listen for app to be ready
 app.on('ready', function () {
     // Create new window
-    mainWindow = new BrowserWindow({});
+    mainWindow = new BrowserWindow({
+        width: 1280,
+        height: 720,
+        frame: false,
+        webPreferences: {
+            nodeIntegration: true
+        }
+    });
+    //mainWindow.setBackgroundColor('#222326');
     // Load html into window
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'mainWindow.html'),
@@ -59,7 +67,15 @@ const mainMenuTemplate = [
         label: 'View',
         submenu: [
             {
-                label: 'Appearance'
+                label: 'Appearance',
+                submenu: [
+                    {
+                        label: 'Dark Theme'
+                    },
+                    {
+                        label: 'Light Theme'
+                    }
+                ]
             }
         ]
     },
