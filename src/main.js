@@ -2,7 +2,7 @@ const electron = require('electron');
 const url = require('url');
 const path = require('path');
 
-const { app, BrowserWindow, Menu } = electron;
+const { app, BrowserWindow, Menu, shell } = electron;
 
 let mainWindow;
 
@@ -28,6 +28,10 @@ function createNewFile() {
 
 }
 
+function refreshPage() {
+    mainWindow.reload();
+}
+
 // Create menu template
 const mainMenuTemplate = [
     {
@@ -50,5 +54,48 @@ const mainMenuTemplate = [
                 }
             }
         ]
+    },
+    {
+        label: 'View',
+        submenu: [
+            {
+                label: 'Appearance'
+            }
+        ]
+    },
+    {
+        label: 'Help',
+        submenu: [
+            {
+                label: 'Documentation',
+                click() {
+                    shell.openExternal('https://featureable.cf');
+                }
+            },
+            {
+                label: 'Release Notes'
+            },
+            {
+                label: 'Check for Updates...'
+            }
+        ]
     }
 ];
+
+if (process.env.NODE_ENV !== 'production') {
+    mainMenuTemplate.push({
+        label: 'Developer Tools',
+        submenu: [
+            {
+                label: 'Toggle DevTools',
+                accelerator: process.platform == 'darwin' ? 'Command+I' : 'Ctrl+I',
+                click() {
+                    mainWindow.toggleDevTools();
+                }
+            },
+            {
+                role: 'reload'
+            }
+        ]
+    })
+}
